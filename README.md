@@ -8,7 +8,7 @@
 
 CakePHP 3.x plugin for creating interacting with DigitalOcean api v1
 
-## Installation
+## Installation & Configuration
 
 ```
 composer require lubos/digital-ocean
@@ -18,6 +18,14 @@ Load plugin in bootstrap.php file
 
 ```php
 Plugin::load('Lubos/DigitalOcean');
+```
+
+Get [Personal Access Tokens](https://cloud.digitalocean.com/settings/applications) and put them into config
+```php
+'DigitalOcean' => [
+    'client_id' => 'your-client-id',
+    'api_key' => 'your-api-key'
+]
 ```
 
 ## Usage
