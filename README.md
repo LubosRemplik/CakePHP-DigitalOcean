@@ -1,10 +1,10 @@
 # CakePHP DigitalOcean
 
-[![Build Status](https://travis-ci.org/LubosRemplik/CakePHP-Table.svg)](https://travis-ci.org/LubosRemplik/CakePHP-DigitalOcean)
-[![Latest Stable Version](https://poser.pugx.org/lubos/table/v/stable.svg)](https://packagist.org/packages/lubos/digital-ocean) 
-[![Total Downloads](https://poser.pugx.org/lubos/table/downloads.svg)](https://packagist.org/packages/lubos/digital-ocean) 
-[![Latest Unstable Version](https://poser.pugx.org/lubos/table/v/unstable.svg)](https://packagist.org/packages/lubos/digital-ocean) 
-[![License](https://poser.pugx.org/lubos/table/license.svg)](https://packagist.org/packages/lubos/digital-ocean)
+[![Build Status](https://travis-ci.org/LubosRemplik/CakePHP-DigitalOcean.svg)](https://travis-ci.org/LubosRemplik/CakePHP-DigitalOcean)
+[![Latest Stable Version](https://poser.pugx.org/lubos/digital-ocean/v/stable.svg)](https://packagist.org/packages/lubos/digital-ocean) 
+[![Total Downloads](https://poser.pugx.org/lubos/digital-ocean/downloads.svg)](https://packagist.org/packages/lubos/digital-ocean) 
+[![Latest Unstable Version](https://poser.pugx.org/lubos/digital-ocean/v/unstable.svg)](https://packagist.org/packages/lubos/digital-ocean) 
+[![License](https://poser.pugx.org/lubos/digital-ocean/license.svg)](https://packagist.org/packages/lubos/digital-ocean)
 
 CakePHP 3.x plugin for creating interacting with DigitalOcean api v1
 
