@@ -22,7 +22,8 @@ Plugin::load('Lubos/DigitalOcean');
 
 ## Usage
 
-run `bin/cake` to see shells and its options
+run `bin/cake` to see shells and its options  
+
 Example:  
 `bin/cake Lubos/DigitalOcean.droplets all`
 
