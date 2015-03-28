@@ -1,5 +1,5 @@
 <?php
-namespace DigitalOcean\Shell;
+namespace Lubos\DigitalOcean\Shell;
 
 use Cake\Console\Shell;
 use Cake\Core\Configure;
