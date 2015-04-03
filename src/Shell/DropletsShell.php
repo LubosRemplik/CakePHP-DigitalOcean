@@ -91,6 +91,17 @@ class DropletsShell extends Shell
                     ]
                 ]
             ])
+            ->addSubcommand('show', [
+                'help' => 'Shows droplet of passed ID',
+                'parser' => [
+                    'arguments' => [
+                        'droplet_id' => [
+                            'help' => 'Droplet ID',
+                            'required' => true
+                        ],
+                    ]
+                ]
+            ])
             ->addSubcommand('destroy', [
                 'help' => 'This method destroys one of your droplets - this is irreversible.',
                 'parser' => [
@@ -177,6 +188,32 @@ class DropletsShell extends Shell
                 'region_id' => $regionId,
             )
         );
+        if (!empty($this->params)) {
+            $data = array_merge(
+                $data,
+                $this->params
+            );
+        }
+        $client = new Client();
+        $response = $client->get($url, $data);
+        if ($response->isOk()) {
+            $this->out(pr($response->json));
+        } else {
+            debug($response);
+        }
+        return $response;
+    }
+
+    /**
+     * Shows droplet of passed ID.
+     *
+     * @param string $dropletId Droplet ID.
+     * @return \Cake\Network\Http\Response
+     */
+    public function show($dropletId)
+    {
+        $url = $this->url . sprintf('/%s', $dropletId);
+        $data = Configure::read('DigitalOcean');
         if (!empty($this->params)) {
             $data = array_merge(
                 $data,
