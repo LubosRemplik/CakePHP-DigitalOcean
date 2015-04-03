@@ -56,6 +56,17 @@ class ImagesShell extends Shell
                     ]
                 ]
             ])
+            ->addSubcommand('show', [
+                'help' => 'Shows image of passed ID',
+                'parser' => [
+                    'arguments' => [
+                        'image_id' => [
+                            'help' => 'image ID',
+                            'required' => true
+                        ],
+                    ]
+                ]
+            ])
             ->addSubcommand('destroy', [
                 'help' => 'This method allows you to destroy an image.',
                 'parser' => [
@@ -93,6 +104,32 @@ class ImagesShell extends Shell
             $this->out(pr($response->json));
         } else {
             $this->out($response->code);
+        }
+        return $response;
+    }
+
+    /**
+     * Shows image of passed ID.
+     *
+     * @param string $imageId Image ID.
+     * @return \Cake\Network\Http\Response
+     */
+    public function show($imageId)
+    {
+        $url = $this->url . sprintf('/%s', $imageId);
+        $data = Configure::read('DigitalOcean');
+        if (!empty($this->params)) {
+            $data = array_merge(
+                $data,
+                $this->params
+            );
+        }
+        $client = new Client();
+        $response = $client->get($url, $data);
+        if ($response->isOk()) {
+            $this->out(pr($response->json));
+        } else {
+            debug($response);
         }
         return $response;
     }
