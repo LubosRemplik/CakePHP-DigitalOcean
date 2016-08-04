@@ -6,7 +6,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/lubos/digital-ocean/v/unstable.svg)](https://packagist.org/packages/lubos/digital-ocean) 
 [![License](https://poser.pugx.org/lubos/digital-ocean/license.svg)](https://packagist.org/packages/lubos/digital-ocean)
 
-CakePHP 3.x plugin for creating interacting with DigitalOcean api v1
+CakePHP 3.x plugin for creating interacting with DigitalOcean api v2
 
 ## Installation & Configuration
 
@@ -20,11 +20,10 @@ Load plugin in bootstrap.php file
 Plugin::load('Lubos/DigitalOcean');
 ```
 
-Get [Personal Access Tokens](https://cloud.digitalocean.com/settings/applications) and put them into config
+Get [Access Token](https://cloud.digitalocean.com/settings/api/tokens) and put them into config
 ```php
 'DigitalOcean' => [
-    'client_id' => 'your-client-id',
-    'api_key' => 'your-api-key'
+    'token' => 'your-access-token',
 ]
 ```
 
