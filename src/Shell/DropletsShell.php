@@ -104,6 +104,7 @@ class DropletsShell extends DigitalOceanShell
         $response = $this->client->get('/v2/droplets');
         if ($response->isOk()) {
             $this->out(pr($response->json));
+
             return $response->json;
         } else {
             debug($response);
@@ -121,12 +122,12 @@ class DropletsShell extends DigitalOceanShell
      */
     public function create($name, $region, $size, $image)
     {
-        $data = array(
+        $data = [
             'name' => $name,
             'region' => $region,
             'size' => $size,
             'image' => $image,
-        );
+        ];
         if (!empty($this->params)) {
             $data = array_merge(
                 $data,
@@ -136,6 +137,7 @@ class DropletsShell extends DigitalOceanShell
         $response = $this->client->post('/v2/droplets', $data);
         if ($response->isOk()) {
             $this->out(pr($response->json));
+
             return $response->json;
         } else {
             debug($response);
@@ -153,6 +155,7 @@ class DropletsShell extends DigitalOceanShell
         $response = $this->client->delete('/v2/droplets/' . $dropletId);
         if ($response->code == 204) {
             $this->out('Deleted');
+
             return true;
         } else {
             debug($response);
@@ -173,11 +176,12 @@ class DropletsShell extends DigitalOceanShell
             'name' => $name
         ];
         $response = $this->client->get(
-            sprintf('/v2/droplets/%s/actions', $dropletId), 
+            sprintf('/v2/droplets/%s/actions', $dropletId),
             $data
         );
         if ($response->isOk()) {
             $this->out(pr($response->json));
+
             return $response->json;
         } else {
             debug($response);

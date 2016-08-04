@@ -37,6 +37,7 @@ class ImagesShell extends DigitalOceanShell
         $response = $this->client->get('/v2/images');
         if ($response->isOk()) {
             $this->out(pr($response->json));
+
             return $response->json;
         } else {
             $this->out($response);
