@@ -75,6 +75,17 @@ class DropletsShell extends DigitalOceanShell
                     ]
                 ]
             ])
+            ->addSubcommand('snapshots', [
+                'help' => 'This method list snapshots of the droplet.',
+                'parser' => [
+                    'arguments' => [
+                        'droplet_id' => [
+                            'help' => 'Numeric, this is the id of your droplet that you want to snapshot',
+                            'required' => true
+                        ],
+                    ]
+                ]
+            ])
             ->addSubcommand('snapshot', [
                 'help' => 'This method allows you to take a snapshot of the droplet.',
                 'parser' => [
@@ -163,6 +174,24 @@ class DropletsShell extends DigitalOceanShell
     }
 
     /**
+     * This method list snapshots of the droplet.
+     *
+     * @param int $dropletId Id of the droplet.
+     * @return \Cake\Network\Http\Response
+     */
+    public function snapshots($dropletId)
+    {
+        $response = $this->client->get(sprintf('/v2/droplets/%s/snapshots', $dropletId));
+        if ($response->isOk()) {
+            $this->out(pr($response->json));
+
+            return $response->json;
+        } else {
+            debug($response);
+        }
+    }
+
+    /**
      * This method allows you to take a snapshot of the droplet
      *
      * @param int $dropletId Id of the droplet.
@@ -175,7 +204,7 @@ class DropletsShell extends DigitalOceanShell
             'type' => 'snapshot',
             'name' => $name
         ];
-        $response = $this->client->get(
+        $response = $this->client->post(
             sprintf('/v2/droplets/%s/actions', $dropletId),
             $data
         );
